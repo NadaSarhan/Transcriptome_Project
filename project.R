@@ -15,7 +15,7 @@ library(biomaRt)
 
 ################################################
 
-trans_samples = read.delim("~/NGS/project/all_samples/alignment_samples/count_matrix.tsv")
+trans_samples = read.delim("~/NGS/project/all_samples/normalization_pathway/count_matrix.tsv")
 
 # Remove version numbers if they exist (e.g., ENST00000367770.8 → ENST00000367770)
 trans_samples$target_id <- sub("\\..*", "", trans_samples$target_id)
@@ -44,7 +44,7 @@ new_matrix <- merge(conversion,
 
 # Save updated count matrix
 write.table(new_matrix, 
-            "~/NGS/project/all_samples/alignment_samples/count_matrix_with_gene_names.tsv", 
+            "~/NGS/project/all_samples/normalization_pathway/count_matrix_with_gene_names.tsv", 
             sep="\t", 
             quote=FALSE, 
             row.names=FALSE)
@@ -66,12 +66,12 @@ dim(count_matrix)
 
 # Save updated count matrix
 write.table(count_matrix, 
-            "~/NGS/project/all_samples/alignment_samples/count_matrix_with_gene_names.tsv", 
+            "~/NGS/project/all_samples/normalization_pathway/count_matrix_with_gene_names.tsv", 
             sep="\t", 
             quote=FALSE, 
             row.names=FALSE)
 
-ncbi_matrix = read.delim("~/NGS/project/all_samples/alignment_samples/count_matrix_ncbi_geo/GSE223598_raw_counts_GRCh38.p13_NCBI.tsv", 
+ncbi_matrix = read.delim("~/NGS/project/all_samples/normalization_pathway/GSE223598_raw_counts_GRCh38.p13_NCBI.tsv", 
                          row.names = 1)
 dim(ncbi_matrix)
 dim(count_matrix)
